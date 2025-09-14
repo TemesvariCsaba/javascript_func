@@ -1,1 +1,2 @@
-# javascript_func bumm 
+# javascript_func 
+otthoni commit
