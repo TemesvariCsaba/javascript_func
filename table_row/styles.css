@@ -3,7 +3,32 @@ table,thead,tr,th,tbody,td{
     border-collapse: collapse;
 }
 tr td:last-child, tr td:nth-last-child(3){
-    background-color: blue;
+    background-color: grey;
 }
-
-
+#gyakorlas{
+    background-color: red;
+}
+button:has(+p){
+    background-color: grey;
+}
+button:not(:has(+p)){
+    background-color: beige;
+}
+#gyakorlas:has(+a:hover) button{
+    color: aquamarine;
+}
+tr:not(:has(td[rowspan]))+tr:not(:has(td[rowspan])):hover td{
+    background-color: beige;
+}
+tr:has(td[rowspan]):hover td{
+    background-color: beige;
+}
+tr:has(td[rowspan]):hover+tr td{
+    background-color: beige;
+}
+tr:has(td[rowspan]):has(+tr:hover) td{
+    background-color: beige;
+}
+tr:has(td[rowspan]+ tr:hover td){
+    background-color: beige;
+}
