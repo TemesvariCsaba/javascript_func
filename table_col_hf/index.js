@@ -50,10 +50,13 @@ for (const i of arr) {
     const tr = document.createElement('tr')
     tbody.appendChild(tr)
     const td = document.createElement('td')
+    td.innerText = i.theme
     tr.appendChild(td)
     const td2 = document.createElement('td')
+    td2.innerText = i.time
     tr.appendChild(td2)
     const td3= document.createElement('td')
+    td3.innerText = i.scientist1
     tr.appendChild(td3)
     
     if (i.scientist2 === undefined){
@@ -61,6 +64,7 @@ for (const i of arr) {
     }
     else{
     const td4 = document.createElement('td')
+    td4.innerText = i.scientist2
     tr.appendChild(td4)
     }
 }
