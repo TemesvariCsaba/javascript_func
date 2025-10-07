@@ -43,6 +43,24 @@ th3.innerText = 'Képviselők'
 tr.appendChild(th3)
 th3.colSpan = 2
 
-document.tbody.appendChild(table)
+const tbody = document.createElement('tbody')
 table.appendChild(tbody)
-for(let i)
+
+for (const i of arr) {
+    const tr = document.createElement('tr')
+    tbody.appendChild(tr)
+    const td = document.createElement('td')
+    tr.appendChild(td)
+    const td2 = document.createElement('td')
+    tr.appendChild(td2)
+    const td3= document.createElement('td')
+    tr.appendChild(td3)
+    
+    if (i.scientist2 === undefined){
+         td3.colSpan = 2
+    }
+    else{
+    const td4 = document.createElement('td')
+    tr.appendChild(td4)
+    }
+}
