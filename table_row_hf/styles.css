@@ -1,9 +1,7 @@
 table,thead,tbody,tr,td,th{
     border: black 2px solid;
-    border-collapse: collapse;
-     
+    border-collapse: collapse;   
 }
-
 tr:hover{
     font-weight: bolder;
     color: aquamarine;

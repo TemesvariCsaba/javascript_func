@@ -42,7 +42,6 @@ const th3 = document.createElement('th')
 th3.innerText = 'Képviselők'
 tr.appendChild(th3)
 th3.colSpan = 2
-
 const tbody = document.createElement('tbody')
 table.appendChild(tbody)
 
