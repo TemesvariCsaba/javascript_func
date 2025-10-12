@@ -65,7 +65,6 @@ for(const i of arr){
     tbody.appendChild(tr)
     const td1 = document.createElement("td")
     tr.appendChild(td1)
-    td1.rowSpan = "2"
     const td2 = document.createElement("td")
     tr.appendChild(td2)
     const td3 = document.createElement("td")
@@ -75,13 +74,15 @@ for(const i of arr){
     td3.innerText = i.title
 
     if(i.name2 && i.title2){
+        td1.rowSpan = "2"
         const tr = document.createElement('tr')
         tbody.appendChild(tr)
-        const td1 = document.createElement("td")
-        tr.appendChild(td1)
-        const td2 = document.createElement("td")
-        tr.appendChild(td2)
-        td1.innerText = i.name2
-        td2.innerText = i.title2
+        const td4 = document.createElement("td")
+        tr.appendChild(td4)
+        td1.rowSpan = "2"
+        const td5 = document.createElement("td")
+        tr.appendChild(td5)
+        td4.innerText = i.name2
+        td5.innerText = i.title2
     }
 }
