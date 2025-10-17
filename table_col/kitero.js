@@ -68,7 +68,7 @@ const thead = document.createElement('thead')
 table.appendChild(thead) 
 
 const tr = document.createElement('tr') 
-table.appendChild(tr)
+thead.appendChild(tr)
 
 const th = document.createElement('th')
 th.innerText = 'Szerző neve'
@@ -108,5 +108,21 @@ for (const i of arr) {
     td4.innerText = i.love2
     tr.appendChild(td4)
     }
+}
+/**
+ * letrehozzuk a celltype alapjan th vagy td -t,  megadjuk a cellContent segitsegevel a tartalmat majd hozzafuzzuk a trhez
+ * 
+ * @param {string} cellType -cella típusa (th, td)
+ * @param {string} cellContent -cella tartalma 
+ * @param {HTMLTableRowElement} parentRow - appendeljuk a "szulohoz"
+ * @returns {HTMLTableCellElement}
+ */
+
+
+function createCell(cellType, cellContent, parentRow){
+    const cell = document.createElement(cellType)
+    parentRow.appendChild(cell)
+    cell.innerText = cellContent
+    return cell
 }
 
