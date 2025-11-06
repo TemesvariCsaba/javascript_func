@@ -85,3 +85,81 @@ function createCell(cellType, cellContent, parentRow){
     return cell
 }
 
+const inputArray = [
+    {
+        inputtype: "text",
+        inputid: "kolto_nev",
+        inputame: "kolto_nev"
+    },
+    {
+        inputtype: "text",
+        inputid: "korszak",
+        inputame: "korszak"   
+    },
+    {
+        inputtype: "text",
+        inputid: "szerelem1",
+        inputame: "szerelem1",
+    },
+    {
+        inputtype: "text",
+        inputid: "szerelem2",
+        inputame: "szerelem2",
+    },
+]
+
+
+const form = document.createElement("form")
+form.id = "form_js"
+document.body.appendChild(form)
+const h2 = document.createElement("h2")
+h2.innerText = "JavaScript form"
+
+const labelNev = document.createElement("label")
+form.appendChild(labelNev)
+labelNev.innerText = "Költő Neve: "
+labelNev.htmlFor = "kolto_nev"
+
+const br = document.createElement("br")
+form.appendChild(br)
+
+const inputName = document.createElement("input")
+inputName.type = "text"
+inputName.id = "kolto_nev"
+inputName.name = "kolto_nev"
+form.appendChild(inputName)
+
+const br2 = document.createElement("br")
+form.appendChild(br2)
+const br3 = document.createElement("br")
+form.appendChild(br3)
+
+for(i of inputArray)
+{
+    
+    createForm ("input", i.inputtype, form)
+}
+
+/**
+ * 
+ * @param {string} inputType 
+ * @param {string} inputContent 
+ * @param {HtmlFormElement} parent 
+ * @returns {HtmlElement}
+ */
+
+function createInput(inputType, inputContent, parent){
+    const br = document.createElement("br")
+    form.appendChild(br)
+
+    const formRow = document.createElement(inputType)
+    parent.appendChild(formRow)
+    formRow.innerText = inputContent
+
+    const br2 = document.createElement("br")
+    form.appendChild(br2)
+    const br3 = document.createElement("br")
+    form.appendChild(br3)
+    return formRow
+
+}
