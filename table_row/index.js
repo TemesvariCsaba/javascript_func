@@ -70,6 +70,15 @@ for(const i of arr){
     const td3 = document.createElement("td")
     tr.appendChild(td3)
     td1.innerText = i.nationality
+    td1.addEventListener("click", function(e) 
+    {
+        /**
+         * @type {HTMLTableCellElement} // target 
+         */
+        const target = e.target
+        target.classList.add("marked")
+    })
+    
     td2.innerText = i.name
     td3.innerText = i.title
 
@@ -79,10 +88,46 @@ for(const i of arr){
         tbody.appendChild(tr)
         const td4 = document.createElement("td")
         tr.appendChild(td4)
-        td1.rowSpan = "2"
+        
         const td5 = document.createElement("td")
         tr.appendChild(td5)
         td4.innerText = i.name2
         td5.innerText = i.title2
     }
 }
+/**
+ *  @type {HTMLElement} //form
+ */
+const htmlForm = document.getElementById("htmlform")
+htmlForm.addEventListener("submit", function(e)
+    {
+        e.preventDefault()
+        /**
+         *  @type {HTMLFormElement}
+         */
+        const target = e.target
+
+        /**
+        * @type {HTMLInputElement}
+        */
+        const query = target.querySelector("#nemzetiseg")
+        const query2 = target.querySelector("#szerzo1")
+        const query3 = target.querySelector("#mu")
+        const query4 = target.querySelector("#szero2")
+        const query5 = target.querySelector("#mu2")
+            
+        /**
+         * @type {string}
+         */
+        const value = query.value
+        const value2 = query2.value
+        const value3 = query3.value
+        const value4 = query4.value
+        const value5 = query5.value
+
+        /**
+         * @type {{nationality: string, name: string:, title:string, name2.string, title2:string}}
+         */
+        const obj = {}
+    }
+)
