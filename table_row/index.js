@@ -112,8 +112,8 @@ htmlForm.addEventListener("submit", function(e)
         */
         const query = target.querySelector("#nemzetiseg")
         const query2 = target.querySelector("#szerzo1")
-        const query3 = target.querySelector("#mu")
-        const query4 = target.querySelector("#szero2")
+        const query3 = target.querySelector("#mu1")
+        const query4 = target.querySelector("#szerzo2")
         const query5 = target.querySelector("#mu2")
             
         /**
@@ -126,8 +126,49 @@ htmlForm.addEventListener("submit", function(e)
         const value5 = query5.value
 
         /**
-         * @type {{nationality: string, name: string:, title:string, name2.string, title2:string}}
+         * @type {{nationality: string, name: string, title:string, name2:string, title2:string}}
          */
         const obj = {}
+        obj.nationality = value
+        obj.name = value2
+        obj.title = value3
+        obj.name2 = value4
+        obj.title2 = value5
+
+        const tbodyForm = document.getElementById("tbody")
+        const tr = document.createElement("tr")
+        tbodyForm.appendChild(tr)
+        const td1 = document.createElement("td")
+        tr.appendChild(td1)
+        const td2 = document.createElement("td")
+        tr.appendChild(td2)
+        const td3 = document.createElement("td")
+        tr.appendChild(td3)
+        td1.innerText = obj.nationality
+        
+        td1.addEventListener("click", function(e) 
+        {
+            /**
+            * @type {HTMLTableCellElement} // target 
+            */
+            const target = e.target
+            target.classList.add("marked")
+        })
+    
+        td2.innerText = obj.name
+        td3.innerText = obj.title
+
+        if(obj.name2 && obj.title2){
+            td1.rowSpan = "2"
+            const tr = document.createElement('tr')
+            tbodyForm.appendChild(tr)
+            const td4 = document.createElement("td")
+            tr.appendChild(td4)
+        
+            const td5 = document.createElement("td")
+            tr.appendChild(td5)
+            td4.innerText = obj.name2
+            td5.innerText = obj.title2
+        }    
     }
 )
