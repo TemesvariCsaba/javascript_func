@@ -85,6 +85,7 @@ function renderTableBody(tableArr)
         /**
          * @type {HTMLTableCellElement} // target 
          */
+<<<<<<< HEAD
         const target = e.target 
         const tr = target.parentElement
         const tbody = tr.parentElement
@@ -95,6 +96,10 @@ function renderTableBody(tableArr)
             tbodyRes.classList.remove(marked)
         }
         target.classList.add(marked)
+=======
+        const target = e.target
+        target.classList.add("marked")
+>>>>>>> f7571faa2c83a3546c04d54070b49b58ea35f40c
     })
     
     td2.innerText = i.name
@@ -115,8 +120,11 @@ function renderTableBody(tableArr)
         }
     }
 }
+<<<<<<< HEAD
 renderTableBody(arr)
 
+=======
+>>>>>>> f7571faa2c83a3546c04d54070b49b58ea35f40c
 /**
  *  @type {HTMLElement} //form
  */
@@ -133,6 +141,7 @@ htmlForm.addEventListener("submit", function(e)
         * @type {HTMLInputElement}
         */
         const query = target.querySelector("#nemzetiseg")
+<<<<<<< HEAD
          /**
         * @type {HTMLInputElement}
         */
@@ -148,12 +157,18 @@ htmlForm.addEventListener("submit", function(e)
          /**
         * @type {HTMLInputElement}
         */
+=======
+        const query2 = target.querySelector("#szerzo1")
+        const query3 = target.querySelector("#mu1")
+        const query4 = target.querySelector("#szerzo2")
+>>>>>>> f7571faa2c83a3546c04d54070b49b58ea35f40c
         const query5 = target.querySelector("#mu2")
             
         /**
          * @type {string}
          */
         const value = query.value
+<<<<<<< HEAD
         /**
          * @type {string}
          */
@@ -169,6 +184,11 @@ htmlForm.addEventListener("submit", function(e)
         /**
          * @type {string}
          */
+=======
+        const value2 = query2.value
+        const value3 = query3.value
+        const value4 = query4.value
+>>>>>>> f7571faa2c83a3546c04d54070b49b58ea35f40c
         const value5 = query5.value
 
         /**
@@ -181,8 +201,46 @@ htmlForm.addEventListener("submit", function(e)
         obj.name2 = value4
         obj.title2 = value5
 
+<<<<<<< HEAD
         arr.push(obj)
         renderTableBody(arr)
         
+=======
+        const tbodyForm = document.getElementById("tbody")
+        const tr = document.createElement("tr")
+        tbodyForm.appendChild(tr)
+        const td1 = document.createElement("td")
+        tr.appendChild(td1)
+        const td2 = document.createElement("td")
+        tr.appendChild(td2)
+        const td3 = document.createElement("td")
+        tr.appendChild(td3)
+        td1.innerText = obj.nationality
+        
+        td1.addEventListener("click", function(e) 
+        {
+            /**
+            * @type {HTMLTableCellElement} // target 
+            */
+            const target = e.target
+            target.classList.add("marked")
+        })
+    
+        td2.innerText = obj.name
+        td3.innerText = obj.title
+
+        if(obj.name2 && obj.title2){
+            td1.rowSpan = "2"
+            const tr = document.createElement('tr')
+            tbodyForm.appendChild(tr)
+            const td4 = document.createElement("td")
+            tr.appendChild(td4)
+        
+            const td5 = document.createElement("td")
+            tr.appendChild(td5)
+            td4.innerText = obj.name2
+            td5.innerText = obj.title2
+        }    
+>>>>>>> f7571faa2c83a3546c04d54070b49b58ea35f40c
     }
 )
