@@ -11,18 +11,22 @@ function renderTableBody(tableArr)
 {
     const tbodyJs = document.getElementById("jstbody")
     tbodyJs.innerHTML = "";
-    for(const i of tableArr){
-        renderTableRow(tbodyJs, i)
+    for(const x of tableArr){
+        renderTableRow(tbodyJs, x)
     }
 }
-
+/**
+ * 
+ * @param {HTMLTableSectionElement} tablebody 
+ * @param {CountryWriters} writerrow
+ */   
 function renderTableRow(tablebody, writerrow){
 
     const tr = document.createElement("tr")
     tablebody.appendChild(tr)
     const td1 = createCell("td", writerrow.nationality, tr)
-    const td2 = createCell("td", writerrow.name, tr)
-    const td3 = createCell("td", writerrow.title, tr)
+    createCell("td", writerrow.name, tr)
+    createCell("td", writerrow.title, tr)
     
     td1.addEventListener("click", function(e) 
     {
@@ -31,30 +35,24 @@ function renderTableRow(tablebody, writerrow){
          */
 
         const target = e.target
-        const tr = target.parentElement
-        const tbody = tr.parentElement
-        const tbodyRes = tbody.querySelector('.marked')
-                
-        if (tbodyRes) 
+        const tr2 = target.parentElement.parentElement
+        const tbodyRes = tr2.querySelector('.marked')    
+        if (tbodyRes != null) 
         {
-            tbodyRes.classList.remove(marked)
+            tbodyRes.classList.remove("marked")
         }
-        target.classList.add(marked)
+        tbodyRes.classList.add("marked")
         
 
     })
 
-/**
- * 
- * @param {HTMLTableSectionElement} tablebody 
- * @param {CountryWriters} writerrow
- */    
+ 
     if(writerrow.name2 && writerrow.title2){
         td1.rowSpan = "2"
-        const tr = document.createElement('tr')
-        tablebody.appendChild(tr)
-        const td4 = createCell("td", writerrow.name2, tr)
-        const td5 = createCell("td", writerrow.title2, tr)
+        const tr1 = document.createElement('tr')
+        tablebody.appendChild(tr1)
+        createCell("td", writerrow.name2, tr1)
+        createCell("td", writerrow.title2, tr1)
           
     }
 }
@@ -86,12 +84,48 @@ function generateHeader(table, headerList){
        const th = createCell("th", t, tr)
     }
 
+
 }
+/**
+ * 
+ * @param {HTMLElement} parentBr 
+ */
+function generateBr(parentBr){
+    const br = document.createElement("br")
+    parentBr.appendChild(br)
+}
+
+/**
+ * 
+ * @param {HTMLFormElement} parentForm form amihez hozzaadom
+ * @param {string} formContent tartalom(szoveg)
+ * @param {string} formId id
+ * 
+ * letrehoz egy formot
+ */
+
+function createFormElement(parentForm, formContent, formId){
+    const label = document.createElement("label")
+    label.innerText = formContent
+    label.htmlFor = formId
+    parentForm.appendChild(label)
+    generateBr(parentForm)
+    const input = document.createElement("input")
+    input.type = "text"
+    input.id = formId
+    input.name = formId
+    parentForm.appendChild(input)
+    generateBr(parentForm)
+    generateBr(parentForm)
+    
+    
+}
+
 function htmlEventListener(e){
      e.preventDefault()
         /**
          *  @type {HTMLFormElement}
-         */
+        */
         const target = e.target
         /**
         * @type {HTMLInputElement}
@@ -144,7 +178,62 @@ function htmlEventListener(e){
         obj.name2 = value4
         obj.title2 = value5
 
-        arr.push(obj)
-        renderTableBody(arr)
+        const htmlTable = document.getElementById("tbody")
 
+        renderTableRow( htmlTable , obj)
+
+}
+/**
+ * 
+ * @param {string} stringId 
+ * @param {{label: string, id:string}[]} stringArr 
+ */
+function createForm (stringId, stringArr){
+    const formJava = document.createElement("form")
+    formJava.id = stringId
+    document.body.appendChild (formJava)
+    for (const x of stringArr){
+    createFormElement( formJava, x.label, x.id )
+    }
+
+    const gombSzab = document.createElement("button")
+    gombSzab.innerText = "Hozzáadás"
+    formJava.appendChild(gombSzab)
+    return formJava
+}
+/**
+ * 
+ * @param {htmlInputField} inputContent 
+ * @param {string} errorMessage
+ * @returns {boolean}
+
+ */
+function validateField(inputContent, errorMessage){
+    let inspect = true
+    if ( inputContent.value == ""){
+        const parent = inputContent.parentElement
+        const result = parent.querySelector(".error")
+        result.innerText = errorMessage
+        inspect = false
+        
+    }else{
+        const parent = inputContent.parentElement
+        const result = parent.querySelector(".error")
+        result.innerText = ''
+    }
+    return inspect
+}
+/**
+ * 
+ * @param {htmlInputField} inputContent1 
+ * @param {htmlInputField} inputContent2 
+ * @param {htmlInputField} inputContent3 
+ * @returns  {boolean}
+ */
+function validateFields(inputContent1, inputContent2, inputContent3){
+    let inspect = true
+    if(validateField(inputContent1,"kötelező") == false){inspect=false}
+    if(validateField(inputContent2,"kötelező") == false){inspect =false}
+    if(validateField(inputContent3,"kötelező") == false){inspect =false}
+    return inspect
 }
